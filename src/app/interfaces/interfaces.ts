@@ -1,10 +1,10 @@
 import { Directive, EventEmitter, ViewContainerRef } from '@angular/core';
 
-export interface DynamicComponent  {
-    data: any;  
-    notifyparent: EventEmitter<any>;  
-
+export interface DynamicComponent <inputType,OutputType> {
+    data: inputType;  
+    notifyparent: EventEmitter<OutputType>;  
 }   
+ 
 
 @Directive({
   selector: '[appDynamic]'
