@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DynamicComponent } from 'src/app/interfaces/interfaces';
 
 @Component({
@@ -8,6 +8,7 @@ import { DynamicComponent } from 'src/app/interfaces/interfaces';
 })
 export class Component1Component implements DynamicComponent {
   @Input('data') data!: any
+  @Output('notifyparent') notifyparent:EventEmitter<any>=new EventEmitter<any>()
 
   constructor() { }
 

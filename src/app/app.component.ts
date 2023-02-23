@@ -11,6 +11,7 @@ import { DynamicComponent, DynamicDirective } from './interfaces/interfaces';
 export class AppComponent implements OnInit{
 
   @ViewChild(DynamicDirective, {static: true}) private dynamicHost!: DynamicDirective;  
+  @ViewChild(Component2Component, {static: true}) private Component2Component!: Component2Component;  
  
   ComponentRef:ComponentRef<DynamicComponent>[]=[]
   public components : { type: Type<DynamicComponent>,data?:any }[] = [  
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit{
 
   title = 'DynamicComponents';
   ngOnInit(): void {
-    this.loadComponent();  
+    this.loadComponent();
   }
   private loadComponent(): void {  
     if (this.components.length === 0) return;  
@@ -29,11 +30,7 @@ export class AppComponent implements OnInit{
     this.components.forEach(x=>{
      const ref= viewContainerRef.createComponent<DynamicComponent>(x.type)
      ref.instance.data=x.data
-      this.ComponentRef.push( ref);  
-    });
-   
-}
-getNotification(data:any){
-      alert("received")
+     ref.instance.notifyparent.subscribe(val => alert(val));
+     });
 }
 }

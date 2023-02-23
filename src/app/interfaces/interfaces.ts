@@ -1,7 +1,8 @@
-import { Directive, ViewContainerRef } from '@angular/core';
+import { Directive, EventEmitter, ViewContainerRef } from '@angular/core';
 
 export interface DynamicComponent  {
     data: any;  
+    notifyparent: EventEmitter<any>;  
 
 }   
 
